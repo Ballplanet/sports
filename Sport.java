@@ -33,7 +33,6 @@ public class Sport {
         do {
             menu();
             opcao = entrada.nextInt();
-            
             if (opcao == 1) {
                 System.out.println("Digite seu nome completo: ");
                 name = people.nextLine();
@@ -45,10 +44,10 @@ public class Sport {
                 CPF = people.nextLine();
                 System.out.println("digite o ano de Nascimento: ");
                 anoDeNasci = people.nextInt();
-                System.out.println("Qual o Horario do jogo [0 = Manhã / 1 = Tarde /2 = Noite");
+                System.out.println("Qual o Horario do jogo [1 = Manhã / 2 = Tarde / 3 = Noite");
                 do{
                     horario = entrada.nextInt();
-                }while(horario != 0 && horario != 1 && horario != 2);
+                }while(horario != 1 && horario != 2 && horario != 3);
                 
             } else if (opcao == 2) {
                 Calendar calendario = Calendar.getInstance();
@@ -59,20 +58,22 @@ public class Sport {
                 System.out.println("O telefone informado é:\n " + telefone);
                 System.out.println("Tem " + idade + " anos");
                 System.out.println("O cpf informado é \n" + CPF);
-              
-            }else if(opcao == 3) {
-                System.out.println("Horario");
-                if (horario == 0 ){
-                    System.out.println("manha");
-                }else if (horario == 1){
-                    System.out.println("tarde");
+                
+            } else if(opcao == 3){
+                System.out.println("Horario Marcado");
+                if (horario == 1 ){
+                    System.out.println("Manha");
                 }else if (horario == 2){
-                    System.out.println("noite");
+                    System.out.println("Tarde");
+                }else if (horario == 3){
+                    System.out.println("Noite");
                 }
                 
-            }else{
+            } else if(opcao == 0){
                 System.out.println("fim do programa!");
-            }
+            } else{ System.out.println("Opção invalida");}
+
         } while (opcao != 0);
+
     }
 }
