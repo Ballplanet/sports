@@ -12,28 +12,16 @@ public class Sport {
         System.out.println("\tCadastro de Usuario");
         System.out.println("0. | +-------fim-------+ |");
         System.out.println("1. | +-----INCLUIR-----+ |");
-        System.out.println("2. | +-----VER DADOS-----+ |");
-        System.out.println("3. | +-----EXCLUIR-----+ |");
+        System.out.println("2. | +----VER DADOS----+ |");
+        System.out.println("3. | +---VER HORARIO---+ |");
         System.out.println("Opção: ");
 
-    }
-
-    public static void incluir() {
-        System.out.println("Incluir um usuario");
-    }
-
-    public static void verDados() {
-        System.out.println("Ver dados do Usuario");
-    }
-
-    public static void excluir() {
-        System.out.println("EXCLUIR USUARIO");
     }
 
     public static void main(String[] args) {
         int opcao;
         Scanner people = new Scanner(System.in);
-        int idade;
+        int idade, horario = 0;
         String email = null;
         String telefone = null;
         String name = null;
@@ -45,6 +33,7 @@ public class Sport {
         do {
             menu();
             opcao = entrada.nextInt();
+            
             if (opcao == 1) {
                 System.out.println("Digite seu nome completo: ");
                 name = people.nextLine();
@@ -56,6 +45,11 @@ public class Sport {
                 CPF = people.nextLine();
                 System.out.println("digite o ano de Nascimento: ");
                 anoDeNasci = people.nextInt();
+                System.out.println("Qual o Horario do jogo [0 = Manhã / 1 = Tarde /2 = Noite");
+                do{
+                    horario = entrada.nextInt();
+                }while(horario != 0 && horario != 1 && horario != 2);
+                
             } else if (opcao == 2) {
                 Calendar calendario = Calendar.getInstance();
                 anoAtual = calendario.get(Calendar.YEAR);
@@ -65,11 +59,20 @@ public class Sport {
                 System.out.println("O telefone informado é:\n " + telefone);
                 System.out.println("Tem " + idade + " anos");
                 System.out.println("O cpf informado é \n" + CPF);
+              
+            }else if(opcao == 3) {
+                System.out.println("Horario");
+                if (horario == 0 ){
+                    System.out.println("manha");
+                }else if (horario == 1){
+                    System.out.println("tarde");
+                }else if (horario == 2){
+                    System.out.println("noite");
+                }
+                
             }else{
                 System.out.println("fim do programa!");
             }
-
         } while (opcao != 0);
-
     }
 }
