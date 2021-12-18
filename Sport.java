@@ -28,6 +28,8 @@ public class Sport {
         String CPF = null;
         int anoDeNasci = 0;
         int anoAtual;
+        String dias[] = {"Segunda","Terça","Quarta","Quinta","Sexta","Sábado","Domingo"};
+        int dia = 0;
         
         Scanner entrada = new Scanner(System.in);
         do {
@@ -48,18 +50,27 @@ public class Sport {
                 do{
                     horario = entrada.nextInt();
                 }while(horario != 1 && horario != 2 && horario != 3);
+                System.out.println("informe um numero de 1 á 7 " +
+                        "para informar que dia irá jogar: ");
+                System.out.println("onde 1 será a segunda 2" +
+                        " será a terça e assim por diante.");
+                do {
+                    dia = entrada.nextInt();
+                    dia = dia - 1;
+                }while(dia > dias.length);
                 
             } else if (opcao == 2) {
                 Calendar calendario = Calendar.getInstance();
                 anoAtual = calendario.get(Calendar.YEAR);
                 idade = anoAtual - anoDeNasci;
-                System.out.println(name);
+                System.out.println("Jogador \n " + name);
                 System.out.println("O email informado é:\n " + email);
                 System.out.println("O telefone informado é:\n " + telefone);
                 System.out.println("Tem " + idade + " anos");
                 System.out.println("O cpf informado é \n" + CPF);
                 
             } else if(opcao == 3){
+                System.out.println("O jogo será na(o) "+dias[dia]);
                 System.out.println("Horario Marcado");
                 if (horario == 1 ){
                     System.out.println("Manha");
