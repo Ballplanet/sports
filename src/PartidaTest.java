@@ -89,11 +89,11 @@ public class PartidaTest {
         int numero = opcao.nextInt(2);
         switch (numero) {
             case 0 -> {
-                pessoa.setFuncionario(FuncionarioTest.FUNCIONARIO1);
+                pessoa.setFuncionario(FuncionarioEnum.FUNCIONARIO1);
                 System.out.println(pessoa.getFuncionario().getDescricao());
             }
             case 1 -> {
-                pessoa.setFuncionario(FuncionarioTest.FUNCIONARIO2);
+                pessoa.setFuncionario(FuncionarioEnum.FUNCIONARIO2);
                 System.out.println(pessoa.getFuncionario().getDescricao());
             }
         }
