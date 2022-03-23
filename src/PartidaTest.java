@@ -3,78 +3,59 @@
  * @version 18/03/2022
  */
 import java.util.Scanner;
+import java.util.Random;
 
 public class PartidaTest {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] arg){
+        new Funcionario();
         final int QUANTIDADEJOGADORES = 5;
         Time time1 = new Time(QUANTIDADEJOGADORES);
         Time time2 = new Time(QUANTIDADEJOGADORES);
         int menu_opcao;
         boolean menu = true;
-            Funcionario funcionario1 = new Funcionario("Arnaldo Sacobino",
-                    "(83) 97789-4455", "RECEPCIONISTA");
-            Funcionario funcionario2 = new Funcionario("Samantha Ivar Hagnalson",
-                    "(83) 99939-4455", "GERENTE");
-            System.out.println("Por qual funcionario você deseja ser atendido: ");
-            System.out.println("+----------------------------+");
-            System.out.println("+|           MENU           |+");
-            System.out.println("+----------------------------+");
-            System.out.println(
-                    """
-                                                        
-                            |\t 01 - ARNALDO           |
-                            |\t 02 - SAMANTHA          |
-                                                         """);
-            System.out.println("+----------------------------+");
+        System.out.println("\n\tA sesguir iremos mostrar o funcionario " +
+                            "que ira cotinuar com o cadastro\n");
+        Enum();
+
+        do {
+            System.out.println("""
+                 1- Cadastra Tecnicos e jogadores do Time A e Time B
+
+                 2- Jogadores do Time-A
+                 3- Jogadores do Time-B
+                 99- **** Sair ****""");
             menu_opcao = scanner.nextInt();
-
+            scanner.nextLine();
             switch (menu_opcao) {
-                case 1 -> imprimeDados(funcionario1);
-                case 2 -> imprimeDados(funcionario2);
-                default -> System.out.println("Funcionario invalido!");
-            }
-            if (menu_opcao == 1 || menu_opcao == 2) {
-                do {
-                    System.out.println("""
-
-                            1- Cadastra Tecnicos e jogadores do Time A e Time B
-
-                            2- Jogadores do Time-A
-                            3- Jogadores do Time-B
-                            99- **** Sair ****""");
-                    menu_opcao = scanner.nextInt();
-                    scanner.nextLine();
-                    switch (menu_opcao) {
-                        case 1 -> {
-                            System.out.println("""
-                                    Escolha as opções:
-                                    1- Cadastra Tecnico Time A\s
-                                    2- Cadastra Tecnico Time B
-                                    3- Cadastra Jogadores Time A\s
-                                    4- Cadastra Jogadores Time B""");
-                            menu_opcao = scanner.nextInt();
-                            scanner.nextLine();
-                            switch (menu_opcao) {
-                                case 1 -> cadastraTecnico(time1);
-                                case 2 -> cadastraTecnico(time2);
-                                case 3 -> cadastrarJogador(time1);
-                                case 4 -> cadastrarJogador(time2);
-                            }
-                        }
-                        case 2 -> {
-                            System.out.println("\n------Time A------");
-                            imprimirDadosTime(time1);
-                        }
-                        case 3 -> {
-                            System.out.println("\n------Time B------");
-                            imprimirDadosTime(time2);
-                        }
-                        case 99 -> menu = false;
-                    }
-                } while (menu);
-            }
-        }
+                 case 1 -> {
+                     System.out.println("""
+                           Escolha as opções:
+                              1- Cadastra Tecnico Time A\s
+                              2- Cadastra Tecnico Time B
+                              3- Cadastra Jogadores Time A\s
+                              4- Cadastra Jogadores Time B""");
+                      menu_opcao = scanner.nextInt();
+                      scanner.nextLine();
+                      switch (menu_opcao) {
+                           case 1 -> cadastraTecnico(time1);
+                           case 2 -> cadastraTecnico(time2);
+                           case 3 -> cadastrarJogador(time1);
+                           case 4 -> cadastrarJogador(time2);
+                       }
+                   }
+                   case 2 -> {
+                       System.out.println("\n------Time A------");
+                       imprimirDadosTime(time1);
+                   }
+                   case 3 -> {
+                       System.out.println("\n------Time B------");
+                       imprimirDadosTime(time2);
+                   }
+                   case 99 -> menu = false;
+             }
+        } while (menu);
+   }
     private static void imprimirDadosTime(Time time) {
         imprimeDados(time.getTecnico());
         for (Jogador jogador : time.getJogadores()) {
@@ -101,6 +82,21 @@ public class PartidaTest {
             tecnico.setNome(scanner.nextLine());
             time.adicionaTecnico(tecnico);
         }else System.out.println("Tecnico já cadstrado");
+    }
+    private static void Enum(){
+        Pessoa pessoa = new Funcionario();
+        Random opcao = new Random();
+        int numero = opcao.nextInt(2);
+        switch (numero) {
+            case 0 -> {
+            pessoa.setFuncionario(FuncionarioTest.FUNCIONARIO1);
+            System.out.println(pessoa.getFuncionario().getDescricao());
+            }
+            case 1 -> {
+                pessoa.setFuncionario(FuncionarioTest.FUNCIONARIO2);
+                System.out.println(pessoa.getFuncionario().getDescricao());
+            }
+        }
     }
     public static void imprimeDados(Pessoa p){
         if (p != null) p.imprimeDados();
