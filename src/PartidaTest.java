@@ -89,8 +89,8 @@ public class PartidaTest {
         int numero = opcao.nextInt(2);
         switch (numero) {
             case 0 -> {
-            pessoa.setFuncionario(FuncionarioTest.FUNCIONARIO1);
-            System.out.println(pessoa.getFuncionario().getDescricao());
+                pessoa.setFuncionario(FuncionarioTest.FUNCIONARIO1);
+                System.out.println(pessoa.getFuncionario().getDescricao());
             }
             case 1 -> {
                 pessoa.setFuncionario(FuncionarioTest.FUNCIONARIO2);
