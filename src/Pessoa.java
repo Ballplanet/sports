@@ -25,6 +25,13 @@ public abstract class Pessoa {
         this.getCpf();
         this.getTelefone();
     }
+    private Funcionario funcionario;
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+    public void setFuncionario(Funcionario funcionario){
+        this.funcionario = funcionario;
+    }
 
     public String getCpf() {return cpf;}
     public void setCpf(String cpf) {
