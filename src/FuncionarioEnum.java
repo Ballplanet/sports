@@ -4,7 +4,7 @@ public enum FuncionarioEnum {
 
     private String descricao;
 
-    FuncionarioTest(String descricao){
+    FuncionarioEnum(String descricao){
         this.descricao = descricao;
     }
     public String getDescricao(){
